@@ -1,0 +1,42 @@
+{% extends "client/layouts.html" %}
+{% load static %}
+
+{% block title %}
+<title>Online Food || Food-All Recipy</title>
+{% endblock %}
+
+{% block main_content %}
+<!--food filter form start-->
+<div class="container">
+	<form >
+		{{food_filter.form}}
+		<button class="btn btn-success" type="submit">Search</button>
+	</form>
+</div>
+
+<!--food filter form end-->
+
+
+<!--Food container start -->
+<div class="container-fluid mt-3">
+	<h1 class="text-muted text-center p-3">
+		Available Foods
+	</h1>
+	<div class="row row-cols-1 row-cols-md-4 g-4">
+		{% for food in foods %}
+		<div class="col " data-aos="zoom-out-up">
+			<div class="card  productss">
+				<img src="/{{food.Food_image}}" class="card-img-top" alt="{{recipy.food_name}}">
+				<div class="card-body">
+					<h5 class="card-title">{{food.food_name}}</h5>
+					<h5 class="text-muted">Rs.{{food.food_price}}</h5>
+					<a href="/fooddetails/{{food.id}}"><button class="btn btn-success px-4 rounded-pill">View Details</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!--recipy container end-->
+{% endblock %}
